@@ -7,7 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.landingpage.landingpage.models.Email;
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
