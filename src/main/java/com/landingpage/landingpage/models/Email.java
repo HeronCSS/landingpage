@@ -1,19 +1,18 @@
 package com.landingpage.landingpage.models;
 
 public class Email {
-    
-    
-    private String nomeRemetente;
+
+    private String from;
 
     private String mensagem;
 
 
-    public String getNomeRemetente() {
-        return this.nomeRemetente;
+    public String getFrom() {
+        return this.from;
     }
 
-    public void setNomeRemetente(String nomeRemetente) {
-        this.nomeRemetente = nomeRemetente;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     public String getMensagem() {

@@ -2,28 +2,359 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../static/navbar.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" th:href="@{static/navbar.css}">
+  <link rel="stylesheet" th:href="@{static/images/}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    .scroller {
+      max-width: 80%;
+    }
+
+    .scroller__inner {
+      padding-block: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .scroller[data-animated="true"] {
+      overflow: hidden;
+      -webkit-mask: linear-gradient(90deg,
+          transparent,
+          white 20%,
+          white 80%,
+          transparent);
+      mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    }
+
+    .scroller[data-animated="true"] .scroller__inner {
+      width: max-content;
+      flex-wrap: nowrap;
+      animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+    }
+
+    .scroller[data-direction="right"] {
+      --_animation-direction: reverse;
+    }
+
+    .scroller[data-direction="left"] {
+      --_animation-direction: forwards;
+    }
+
+    .scroller[data-speed="fast"] {
+      --_animation-duration: 20s;
+    }
+
+    .scroller[data-speed="slow"] {
+      --_animation-duration: 60s;
+    }
+
+    @keyframes scroll {
+      to {
+        transform: translate(calc(-50% - 0.5rem));
+      }
+    }
+
+    /* general styles */
+
+    :root {
+      --clr-neutral-100: hsl(0, 0%, 100%);
+      --clr-primary-100: hsl(205, 15%, 58%);
+      --clr-primary-400: hsl(215, 25%, 27%);
+      --clr-primary-800: hsl(217, 33%, 17%);
+      --clr-primary-900: hsl(218, 33%, 9%);
+    }
+
+    .tag-list {
+      margin: 0;
+      padding-inline: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 1rem;
+      background: var(--clr-primary-400);
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+    }
+  </style>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0%;
+      margin: 0%;
+      font-family: Judson, serif, Poppins, Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    li,
+    a,
+    button {
+      font-family: sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: rgb(63, 62, 62);
+      text-decoration: none;
+      font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    header {
+      background-color: white;
+      display: flex;
+      position: fixed;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 1% 5% 1% 5%;
+      height: 10%;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .logo {
+      cursor: pointer;
+      order: 1;
+      height: 200%;
+    }
+
+    .nav-lista {
+      margin: auto 0px;
+      list-style: none;
+    }
+
+    .nav-lista li {
+      display: inline-block;
+      padding: 0px 20px;
+    }
+
+    .link-cta {
+      order: 3;
+      margin-left: auto;
+    }
+
+    .navbar-lp {
+      order: 2;
+    }
+
+    .corpo {
+      position: absolute;
+      margin-top: 4%;
+      width: 100%;
+      height: 50rem;
+      background-image: url("/static/images/brunette");
+    }
+
+    .common-text {
+      font-family: Judson, serif, Poppins, Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: white;
+    }
+
+    .contato-lista {
+      padding-right: 1%;
+    }
+
+    .my-input-group {
+      display: flex;
+      align-items: center;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--bs-body-color);
+      text-align: center;
+      white-space: nowrap;
+      background-color: var(--bs-tertiary-bg);
+      border: var(--bs-border-width) solid var(--bs-border-color);
+      border-radius: var(--bs-border-radius);
+      width: 7rem;
+    }
+
+    #conteudo {
+      height: 15rem;
+    }
+
+    body {
+      background-color: rgb(17, 76, 133);
+    }
+
+    #acoes {
+      background-color: rgb(139, 56, 13);
+      color: white;
+    }
+
+    .equipe-individuo {
+      background-color: rgb(139, 56, 13);
+      border-radius: 1%;
+      text-align: center;
+      padding: 2%;
+      color: white;
+      cursor: pointer;
+    }
+
+    .equipe-individuo p {
+      margin-top: 10%;
+      font-family: inherit;
+    }
+
+    .equipe-individuo a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <img src="../static/images/torneira sem fundo 1.png" alt="logo" class="logo">
-        <nav class="navbar-lp">
-            <ul class="nav-lista">
-                <li><a href="#">Quem Somos</a></li>
-                <li><a href="#">Nosso Objetivo</a></li>
-                <li><a href="#">Nossas Ações</a></li>
-            </ul>
-        </nav>
-        <a class="link-cta" href="#">Fale Conosco</a>
-    </header>
-    <main class="corpo"></main>
+  <header> <!-- image_2024-10-07_01-54-14.png -->
+    <img th:src="@{images/DALL_E-2024-10-07-01.17-removebg-preview.png}" alt="logo" class="logo">
+    <nav class="navbar-lp">
+      <ul class="nav-lista">
+        <li><a href="#quem-somos">NOSSO OBJETIVO</a></li>
+        <li><a href="#equipe">QUEM SOMOS</a></li>
+        <li><a href="#acoes">NOSSAS AÇÕES</a></li>
+      </ul>
+    </nav>
+    <a class="link-cta" href="#email">FALE CONOSCO</a>
+  </header>
+  <main class="corpo">
+    <div
+      style="position: absolute; text-align: end;border: 10px; padding-right: 5%; padding-top: 10%; text-align: end; width: 100%;">
+      <h1 class="common-text" style="color: black;">
+        PROJETO MoRHinga</h1>
+      <button class="btn btn-primary"><a class="common-text" href="#quem-somos">CONHEÇA</a></button>
+    </div>
+    <div style="height: 80%; overflow: hidden; background-color: white;">
+      <img style="width: 50%;" th:src="@{images/MORIHINGA-removebg-preview.png}">
+    </div>
+
+    <div id="quem-somos" style="background-color: rgb(17, 76, 133); display: flex; align-items: center;">
+      <div>
+        <div style="padding: 10% 0% 0% 10%; color: white;" class="common-text">
+          <h1>PROJETO MoRHinga</h1>
+        </div>
+        <div style="padding: 0% 10% 10% 10%;">
+          <h6 class="common-text" style="color: white;">
+            <p>O projeto MoRHinga é uma iniciativa inovadora dedicada à pesquisa e desenvolvimento tecnológico focado na
+              gestão sustentável dos recursos hídricos no semiárido pernambucano, uma das regiões mais desafiadoras do
+              Brasil. Nosso objetivo principal é desenvolver uma plataforma web avançada que integra tecnologias de
+              sensoriamento remoto via satélite, inteligência artificial e modelagem espacial, juntamente com sensores
+              acessíveis para medições in-loco. Esta plataforma visa melhorar a supervisão, administração,
+              regulamentação e categorização do uso e ocupação do solo nas áreas influenciadas por reservatórios
+              estratégicos da região.</p>
+            <p>No MoRHinga , adotamos uma abordagem multidisciplinar, reunindo especialistas e instituições de diversas
+              áreas, incluindo ciências ambientais, hidrologia, solos, meteorologia e engenharia. Nossa equipe está
+              comprometida com a excelência científica e tecnológica, trabalhando em conjunto para identificar as
+              vulnerabilidades do sistema hídrico de Pernambuco e recomendar ações que promovam a resiliência climática
+              e o desenvolvimento sustentável.</p>
+            <p>Nosso compromisso é com a produção de conhecimento de alta qualidade, formação de recursos humanos
+              altamente qualificados e transferência de tecnologias para a sociedade. As iniciativas do projeto MoRHinga
+              visam não apenas enfrentar os desafios ambientais e socioeconômicos do semiárido pernambucano, mas também
+              promover a melhoria contínua da qualidade de vida das populações locais.</p>
+          </h6>
+        </div>
+      </div>
+      <div style="margin-right: 5%;">
+        <img th:src="@{images/pessoas-felizes-scaled 1.png}" alt="">
+      </div>
+    </div>
+
+    <div id="equipe" style="display: flex; justify-content: center; background-color: white;">
+      <div class="scroller" data-direction="left" data-speed="slow">
+        <div class="scroller__inner">
+
+          <div class="equipe-individuo">
+            <a href="https://www.instagram.com/silvanete_sss/">
+              <img style="height: 180px;" th:src="@{images/Silvanete.jpg}" alt="" />
+              <p>Profa. Silvanete Silva</p>
+              <p>IG: silvanete_sss</p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="https://www.instagram.com/cezaralan89/">
+              <img style="height: 180px;" th:src="@{images/Alan.jpg}" alt="" />
+              <p>Prof. Alan Cezar</p>
+              <p>IG: cezaralan89</p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="https://www.instagram.com/prof.aldo_sales/">
+              <img style="height: 180px;" th:src="@{images/Aldo.jpg}" alt="" />
+              <p>Prof. Aldo Sales</p>
+              <p>IG: prof.aldo_sales</p>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div id="email" style="background-color: rgb(17, 76, 133); padding: 5%; color: white; padding: 10%;">
+      <form th:action="@{/contatar}" th:object="${email}" enctype="multipart/form-data" method="post">
+        <h2 class="common-text">SE INTERESSOU PELOS NOSSOS SERVIÇOS?</h2>
+      <h5 class="common-text">ENVIE UM EMAIL ABAIXO, IREMOS RETORNAR ASSIM QUE POSSIVEL.</h5>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="my-input-group" id="basic-addon1">Seu Email: </span>
+        </div>
+        <input type="text" th:field="*{from}" class="form-control" placeholder="exemplo@email.com" aria-label="Username"
+          aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="my-input-group">Conteúdo:</span>
+        </div>
+        <textarea class="form-control" th:field="*{mensagem}" id="conteudo" aria-label="With textarea"
+          placeholder="Digite seu email..."></textarea>
+      </div>
+      <div style="display: flex; justify-content: end;"><span style="align-content: end; margin-top: 3%;"><button
+            type="submit" class="btn btn-primary">Enviar</button></span></div>
+      </form>
+    </div>
+  </main>
 </body>
+
+<script>
+  const scrollers = document.querySelectorAll(".scroller");
+
+  // If a user hasn't opted in for recuded motion, then we add the animation
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    addAnimation();
+  }
+
+  function addAnimation() {
+    scrollers.forEach((scroller) => {
+      // add data-animated="true" to every `.scroller` on the page
+      scroller.setAttribute("data-animated", true);
+
+      // Make an array from the elements within `.scroller-inner`
+      const scrollerInner = scroller.querySelector(".scroller__inner");
+      const scrollerContent = Array.from(scrollerInner.children);
+
+      // For each item in the array, clone it
+      // add aria-hidden to it
+      // add it into the `.scroller-inner`
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        duplicatedItem.setAttribute("aria-hidden", true);
+        scrollerInner.appendChild(duplicatedItem);
+      });
+    });
+  }
+
+</script>
 
 </html>
