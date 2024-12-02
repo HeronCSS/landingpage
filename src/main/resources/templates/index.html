@@ -19,7 +19,7 @@
     rel="stylesheet">
   <style>
     .scroller {
-      max-width: 80%;
+      max-width: 100%;
     }
 
     .scroller__inner {
@@ -31,12 +31,6 @@
 
     .scroller[data-animated="true"] {
       overflow: hidden;
-      -webkit-mask: linear-gradient(90deg,
-          transparent,
-          white 20%,
-          white 80%,
-          transparent);
-      mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
     }
 
     .scroller[data-animated="true"] .scroller__inner {
@@ -59,6 +53,10 @@
 
     .scroller[data-speed="slow"] {
       --_animation-duration: 60s;
+    }
+
+    .scroller[data-speed="stop"] {
+      --_animation-duration: 0s;
     }
 
     @keyframes scroll {
@@ -115,7 +113,7 @@
       position: fixed;
       justify-content: flex-start;
       align-items: center;
-      padding: 1% 5% 1% 5%;
+      padding: 1% 5% 1% 1%;
       height: 10%;
       width: 100%;
       z-index: 100;
@@ -193,10 +191,12 @@
     }
 
     .equipe-individuo {
-      background-color: rgb(139, 56, 13);
+      background-color: rgb(17, 76, 133);
       border-radius: 1%;
       text-align: center;
-      padding: 2%;
+      text-wrap: wrap;
+      width: 200px;
+      padding: 10px;
       color: white;
       cursor: pointer;
     }
@@ -210,12 +210,19 @@
       text-decoration: none;
       color: inherit;
     }
+
+    .img-apoio {
+      height: 8rem;
+      padding: 1%;
+    }
   </style>
+
 </head>
 
 <body>
-  <header> <!-- image_2024-10-07_01-54-14.png -->
-    <img th:src="@{images/DALL_E-2024-10-07-01.17-removebg-preview.png}" alt="logo" class="logo">
+  <header>
+    <img th:src="@{images/Captura de tela_2-12-2024_54549_.jpeg}" alt="logo" class="logo" style="height: 50px;">
+
     <nav class="navbar-lp">
       <ul class="nav-lista">
         <li><a href="#quem-somos">NOSSO OBJETIVO</a></li>
@@ -226,23 +233,33 @@
     <a class="link-cta" href="#email">FALE CONOSCO</a>
   </header>
   <main class="corpo">
-    <div
-      style="position: absolute; text-align: end;border: 10px; padding-right: 5%; padding-top: 10%; text-align: end; width: 100%;">
-      <h1 class="common-text" style="color: black;">
-        PROJETO MoRHinga</h1>
-      <button class="btn btn-primary"><a class="common-text" href="#quem-somos">CONHEÇA</a></button>
-    </div>
-    <div style="height: 80%; overflow: hidden; background-color: white;">
-      <img style="width: 50%;" th:src="@{images/MORIHINGA-removebg-preview.png}">
+    <div id="bg" style="height: 80%; overflow: hidden; background-image: url(http://localhost:8080/images/Captura.jpeg); background-repeat: no-repeat; background-size: cover;background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;">
+      
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-direction: column;">
+          <div style="align-items: center;display: flex;flex-direction: column; align-self: start; padding-left: 2%;">
+            <img th:src="@{images/LogoReduzido-Cor.png}" alt="logo" class="logo"
+              style="width: 300px;height: 300px;align-self: center;">
+              <br>
+              <img th:src="@{images/MoRHInGA_Cor_H.png}" alt="logo" class="logo"
+              style="width: auto;height: 100px;align-self: center;">
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: start; margin: 4%; align-self: first baseline;">
+            <h1 class="common-text" style="color: blue;">
+              PROJETO MoRHInGA</h1>
+              <button class="btn btn-primary"><a class="common-text" href="#quem-somos">CONHEÇA</a></button>
+          </div>
+        </div>
+      
     </div>
 
     <div id="quem-somos" style="background-color: rgb(17, 76, 133); display: flex; align-items: center;">
       <div>
-        <div style="padding: 10% 0% 0% 10%; color: white;" class="common-text">
-          <h1>PROJETO MoRHinga</h1>
+        <div style="padding: 10% 0% 0% 10%; color: rgb(134, 168, 79);" class="common-text">
+          <h1 style=" font-weight: 900;">PROJETO MoRHInGA</h1>
         </div>
         <div style="padding: 0% 10% 10% 10%;">
-          <h6 class="common-text" style="color: white;">
+          <h6 class="common-text" style="color: white; text-justify: inter-word; text-align: justify; font-size: large;">
             <p>O projeto MoRHinga é uma iniciativa inovadora dedicada à pesquisa e desenvolvimento tecnológico focado na
               gestão sustentável dos recursos hídricos no semiárido pernambucano, uma das regiões mais desafiadoras do
               Brasil. Nosso objetivo principal é desenvolver uma plataforma web avançada que integra tecnologias de
@@ -262,66 +279,256 @@
           </h6>
         </div>
       </div>
-      <div style="margin-right: 5%;">
-        <img th:src="@{images/pessoas-felizes-scaled 1.png}" alt="">
+      <div style="margin-right: 5%; width: 50%;">
+        <img th:src="@{images/Captura de tela_2-12-2024_45952_.jpeg}" style="width: 600px;" alt="">
       </div>
     </div>
 
-    <div id="equipe" style="display: flex; justify-content: center; background-color: white;">
+    <div id="equipe"
+      style="padding: 10%; display: flex; justify-content: center; background-color: rgb(134, 168, 79); flex-grow: 1; flex-wrap: wrap; color: white;">
+      <div style="width: 100%; text-align: center; color: white;">
+        <h1>COORDENADORES</h1>
+      </div>
+
+      <div class="" style="max-width: 100%;" data-direction="left" data-speed="stop">
+        <div class="" style="padding-block: 1rem; display: flex; flex-wrap: nowrap; gap: 1rem;">
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/3690303625468223">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Alan.jpg}" alt="" />
+              <p>Alan Cezar</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/9563136339839657">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/Aldo.jpg}" alt="" />
+              <p>Aldo Torres Sales</p>
+              <p>Professor de Engenheiro</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/3010818143250408">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/romualdo.jpg}" alt="" />
+              <p>José Romualdo de Sousa Lima</p>
+              <p>Professor de Engenheiro</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/7139685024425123">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/domingues.jpg}" alt="" />
+              <p>Marco Antônio de Oliveira Domingues</p>
+              <p>Professor de Engenheiro</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+      <div style="width: 100%; text-align: center; color: white;">
+        <h1>COLABORADORES</h1>
+      </div>
       <div class="scroller" data-direction="left" data-speed="slow">
         <div class="scroller__inner">
-
           <div class="equipe-individuo">
-            <a href="https://www.instagram.com/silvanete_sss/">
-              <img style="height: 180px;" th:src="@{images/Silvanete.jpg}" alt="" />
-              <p>Profa. Silvanete Silva</p>
-              <p>IG: silvanete_sss</p>
+            <a href="http://lattes.cnpq.br/0697832792587182">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/silvanete.jpg}" alt="" />
+              <p>Silvanete Silva</p>
+              <p>Professora de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
             </a>
           </div>
           <div class="equipe-individuo">
-            <a href="https://www.instagram.com/cezaralan89/">
-              <img style="height: 180px;" th:src="@{images/Alan.jpg}" alt="" />
-              <p>Prof. Alan Cezar</p>
-              <p>IG: cezaralan89</p>
+            <a href="http://lattes.cnpq.br/1540664578909440">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/guilherme.jpg}" alt="" />
+              <p>Luiz Guilherme Medeiros Pessoa</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
             </a>
           </div>
           <div class="equipe-individuo">
-            <a href="https://www.instagram.com/prof.aldo_sales/">
-              <img style="height: 180px;" th:src="@{images/Aldo.jpg}" alt="" />
-              <p>Prof. Aldo Sales</p>
-              <p>IG: prof.aldo_sales</p>
+            <a href="http://lattes.cnpq.br/4379675294862211">
+              <img style="height: 180px; width: 180px;object-fit: cover; object-position: 100% 0;" th:src="@{images/Professores/genival.jpg}" alt="" />
+              <p>Genival Barros Junior</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/6452877879697522">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/raliuson.jpg}" alt="" />
+              <p>José Raliuson Inácio Silva</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/1239211733965468">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/denizard.jpg}" alt="" />
+              <p>Denizard Oresca</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/5237858035699174">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/antonino.jpg}" alt="" />
+              <p>Antonio C. D. Antonino</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/8700785734423644">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/severino.jpg}" alt="" />
+              <p>Severino Martins dos Santos Neto</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/4654692334430085">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/gurmao.jpg}" alt="" />
+              <p>Rodrigo Gusmão de Carvalho Rocha</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/2498961747789618">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/jean.jpg}" alt="" />
+              <p>Jean Carlos Teixeira de Araujo</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/anderson.jpg}" alt="" />
+              <p>Anderson Luiz Moreira de Souza</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/6527697226275967">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/semfoto.png}" alt="" />
+              <p>Josimar Gurgel Fernandes</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
+            </a>
+          </div>
+          <div class="equipe-individuo">
+            <a href="http://lattes.cnpq.br/7815412935048164">
+              <img style="height: 180px; width: 180px;object-fit: cover;" th:src="@{images/Professores/glauber.jpg}" alt="" />
+              <p>Glauber Pereira de Carvalho Santos</p>
+              <p>Professor de Engenharia</p>
+              <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
             </a>
           </div>
 
+        </div>
+      </div>
 
+      <div style="display: flex; align-items: start; align-items: center;">
+        <div style="width: 50%; padding: 5%;">
+          <p>O Projeto MorHINGA é composto por uma equipe multidisciplinar de professores, pesquisadores, estudantes e
+            técnicos de laboratório das seguintes instituições: UFRPE, UFAPE, UFPE, IFPE, IPA, ITEP e o Observatório
+            Nacional da Dinâmica da Água e do Carbono no Bioma Caatinga (OndaCBC). Nossa equipe é altamente qualificada
+            e comprometida com o desenvolvimento de ferramentas tecnológicas inovadoras para a gestão hídrica
+            sustentável.
+          </p>
+        </div>
+        <div style="padding-top: 5%; width: 50%;">
+          <img src="https://seeklogo.com/images/U/ufrpe-logo-B8299D009E-seeklogo.com.png" class="img-apoio" alt="">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1I_NXUITsrHlKE-Mv2c3vB7gOBTMPb0auGQ&s"
+            class="img-apoio" alt="">
+          <img
+            src="https://seeklogo.com/images/U/ufpe-univesidade-federal-de-pernambuco-logo-8E76BE230C-seeklogo.com.png"
+            class="img-apoio" alt="">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4DpuBIHJjVUojTJNv_Yd3_3bf_OYdErIzqw&s"
+            class="img-apoio" alt="">
+          <img
+            src="https://yt3.googleusercontent.com/AnWO-dpB3GDm1VgMWAjEhqWEbR1oxEFPwl2cEuL3cscChfvAgAPyctW4KcYzBZDRunY26c9P2g=s900-c-k-c0x00ffffff-no-rj"
+            class="img-apoio" alt="">
+          <img src="https://www.ncti.com.br/wp-content/uploads/2014/02/ITEP.png" class="img-apoio" alt="">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrXK3TiPi4tOkjOCvIXboEvMTK6J2al7LAmA&s"
+            class="img-apoio" alt="">
+        </div>
+      </div>
+
+      <div class="pt-2">
+        <p>Nosso compromisso é com a excelência na pesquisa, desenvolvimento tecnológico, formação de recursos humanos e
+          a transferência de conhecimento para a sociedade. Juntos, estamos trabalhando para enfrentar os desafios
+          ambientais e socioeconômicos do semiárido pernambucano, promovendo um futuro sustentável para todos.</p>
+      </div>
+      <div>
+        <div class="text-center">
+          <h3>Instituições Financiadoras da Pesquisa e Edital Aprovado</h3>
+        </div>
+        <p>O projeto MoRHinga é um esforço colaborativo que conta com o apoio financeiro de várias instituições,
+          essenciais para a viabilização das pesquisas e desenvolvimento de tecnologias inovadoras. Entre as principais
+          instituições financiadoras, destacam-se a FACEPE e a APAC.</p>
+      </div>
+      <div class="pt-5 d-flex flex-wrap flex-grow-1 align-items-center">
+
+        <div style="text-align: justify;">
+          <div class="d-flex justify-content-center p-2">
+            <img src="https://www.facepe.br/wp-content/uploads/2014/04/Marca-FACEPE.png" class="img-apoio" alt="">
+          </div>
+          <div class="text-center">
+            <p>FACEPE - Fundação de Amparo à Ciência e Tecnologia do Estado de Pernambuco</p>
+          </div>
+          <p>A FACEPE é uma das principais financiadoras do projeto MorHINGA, reconhecida por seu papel vital no apoio
+            ao desenvolvimento científico e tecnológico em Pernambuco. Através do seu edital de apoio à pesquisa, a
+            FACEPE proporciona os recursos necessários para a execução de projetos inovadores e relevantes, contribuindo
+            significativamente para a formação de recursos humanos qualificados e para a geração de conhecimentos
+            científicos aplicados.
+          </p>
+        </div>
+        <div>
+          <div class="d-flex justify-content-center">
+            <img src="https://www.apac.pe.gov.br/images/Marca_Apac_2020_hor_positiva.png" class="img-apoio" alt="">
+          </div>
+          <div class="text-center">
+            <p>APAC - Agência Pernambucana de Águas e Clima</p>
+          </div>
+          <p>A APAC desempenha um papel crucial no financiamento do projeto MorHINGA, particularmente na área de gestão
+            e monitoramento dos recursos hídricos. Através de seus programas e editais de apoio, a APAC oferece suporte
+            financeiro e técnico para projetos que visam aprimorar a gestão da água e do clima no estado de Pernambuco.
+            A contribuição da APAC é fundamental para o desenvolvimento de ferramentas tecnológicas que permitem uma
+            gestão mais eficiente e sustentável dos recursos hídricos.</p>
         </div>
       </div>
     </div>
 
     <div>
-      
+
     </div>
 
     <div id="email" style="background-color: rgb(17, 76, 133); padding: 5%; color: white; padding: 10%;">
       <form th:action="@{/contatar}" th:object="${email}" enctype="multipart/form-data" method="post">
         <h2 class="common-text">SE INTERESSOU PELOS NOSSOS SERVIÇOS?</h2>
-      <h5 class="common-text">ENVIE UM EMAIL ABAIXO, IREMOS RETORNAR ASSIM QUE POSSIVEL.</h5>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="my-input-group" id="basic-addon1">Seu Email: </span>
+        <h5 class="common-text">ENVIE UM EMAIL ABAIXO, IREMOS RETORNAR ASSIM QUE POSSIVEL.</h5>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="my-input-group" id="basic-addon1">Seu Email: </span>
+          </div>
+          <input type="text" th:field="*{from}" class="form-control" placeholder="exemplo@email.com"
+            aria-label="Username" aria-describedby="basic-addon1">
         </div>
-        <input type="text" th:field="*{from}" class="form-control" placeholder="exemplo@email.com" aria-label="Username"
-          aria-describedby="basic-addon1">
-      </div>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="my-input-group">Conteúdo:</span>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="my-input-group">Conteúdo:</span>
+          </div>
+          <textarea class="form-control" th:field="*{mensagem}" id="conteudo" aria-label="With textarea"
+            placeholder="Digite seu email..."></textarea>
         </div>
-        <textarea class="form-control" th:field="*{mensagem}" id="conteudo" aria-label="With textarea"
-          placeholder="Digite seu email..."></textarea>
-      </div>
-      <div style="display: flex; justify-content: end;"><span style="align-content: end; margin-top: 3%;"><button
-            type="submit" class="btn btn-primary">Enviar</button></span></div>
+        <div style="display: flex; justify-content: end;"><span style="align-content: end; margin-top: 3%;"><button
+              type="submit" class="btn btn-primary">Enviar</button></span></div>
       </form>
     </div>
   </main>
