@@ -180,7 +180,7 @@
       height: 15rem;
     }
 
-    
+
 
     #acoes {
       background-color: rgb(139, 56, 13);
@@ -306,7 +306,7 @@
     </div>
 
     <div id="equipe"
-      style="padding: 10%; display: flex; justify-content: center; background: linear-gradient(0deg, rgb(17, 76, 133), rgb(134, 168, 79)10%); flex-grow: 1; flex-wrap: wrap; color: white;">
+      style="padding: 10%; display: flex; justify-content: center; background: linear-gradient(0deg,rgb(17, 76, 133), rgb(134, 168, 79)10%); flex-grow: 1; flex-wrap: wrap; color: white;">
       <div style="width: 100%; text-align: center; color: white;">
         <h1>COORDENADORES</h1>
       </div>
@@ -316,9 +316,9 @@
           <div class="equipe-individuo">
             <a href="http://lattes.cnpq.br/3690303625468223">
               <img class="img-individuo" th:src="@{images/Alan.jpg}" alt="" />
-              <div class="nome-coord">
-                <p class="equipe-individuo-nome">Alan Cezar</p>
-              </div>
+              <!-- <div class="nome-coord"> -->
+              <p class="equipe-individuo-nome">Alan Cezar</p>
+              <!-- </div> -->
               <p>Professor de Engenharia</p>
               <p>Curriculo Lattes <i class="bi bi-box-arrow-up-right"></i></p>
             </a>
@@ -354,7 +354,10 @@
       <div style="width: 100%; text-align: center; color: white;">
         <h1>COLABORADORES</h1>
       </div>
-      <div class="scroller" data-direction="left" data-speed="slow">
+      <!-- <div>
+        <button id="pause-button" onclick="pausarScroller()"><i class="bi bi-pause-circle"></i></button>
+      </div> -->
+      <div class="scroller" id="scroller" data-direction="left" data-speed="slow">
         <div class="scroller__inner">
           <div class="equipe-individuo">
             <a href="http://lattes.cnpq.br/0697832792587182">
@@ -457,8 +460,8 @@
 
         </div>
       </div>
-
-      <div style="display: flex; align-items: start; align-items: center;">
+      <div
+        style="display: flex; align-items: start; align-items: center; text-justify: distribute; text-align: justify;">
         <div style="width: 50%; padding: 5%;">
           <p>O Projeto MorHINGA é composto por uma equipe multidisciplinar de professores, pesquisadores, estudantes e
             técnicos de laboratório das seguintes instituições: UFRPE, UFAPE, UFPE, IFPE, IPA, ITEP e o Observatório
@@ -485,7 +488,7 @@
         </div>
       </div>
 
-      <div class="pt-2">
+      <div class="pt-2 text-justify">
         <p>Nosso compromisso é com a excelência na pesquisa, desenvolvimento tecnológico, formação de recursos humanos e
           a transferência de conhecimento para a sociedade. Juntos, estamos trabalhando para enfrentar os desafios
           ambientais e socioeconômicos do semiárido pernambucano, promovendo um futuro sustentável para todos.</p>
@@ -494,7 +497,8 @@
         <div class="text-center">
           <h3>Instituições Financiadoras da Pesquisa e Edital Aprovado</h3>
         </div>
-        <p>O projeto MoRHinga é um esforço colaborativo que conta com o apoio financeiro de várias instituições,
+        <p class="text-justify">O projeto MoRHinga é um esforço colaborativo que conta com o apoio financeiro de várias
+          instituições,
           essenciais para a viabilização das pesquisas e desenvolvimento de tecnologias inovadoras. Entre as principais
           instituições financiadoras, destacam-se a FACEPE e a APAC.</p>
       </div>
@@ -507,7 +511,8 @@
           <div class="text-center">
             <p>FACEPE - Fundação de Amparo à Ciência e Tecnologia do Estado de Pernambuco</p>
           </div>
-          <p>A FACEPE é uma das principais financiadoras do projeto MorHINGA, reconhecida por seu papel vital no apoio
+          <p class="text-justify">A FACEPE é uma das principais financiadoras do projeto MorHINGA, reconhecida por seu
+            papel vital no apoio
             ao desenvolvimento científico e tecnológico em Pernambuco. Através do seu edital de apoio à pesquisa, a
             FACEPE proporciona os recursos necessários para a execução de projetos inovadores e relevantes, contribuindo
             significativamente para a formação de recursos humanos qualificados e para a geração de conhecimentos
@@ -521,7 +526,8 @@
           <div class="text-center">
             <p>APAC - Agência Pernambucana de Águas e Clima</p>
           </div>
-          <p>A APAC desempenha um papel crucial no financiamento do projeto MorHINGA, particularmente na área de gestão
+          <p class="text-justify">A APAC desempenha um papel crucial no financiamento do projeto MorHINGA,
+            particularmente na área de gestão
             e monitoramento dos recursos hídricos. Através de seus programas e editais de apoio, a APAC oferece suporte
             financeiro e técnico para projetos que visam aprimorar a gestão da água e do clima no estado de Pernambuco.
             A contribuição da APAC é fundamental para o desenvolvimento de ferramentas tecnológicas que permitem uma
@@ -530,8 +536,9 @@
       </div>
     </div>
 
-    <div>
-
+    <div style="background-color: blue; display: flex; align-items: center;">
+      <div th:replace="flipbook">
+      </div>
     </div>
 
     <div id="email" style="background-color: rgb(17, 76, 133); padding: 5%; color: white; padding: 10%;">
@@ -587,6 +594,18 @@
     });
   }
 
+  /* document.getElementById('pause-button').onclick = function (){
+    if(document.getElementById('scroller').getAttribute('data-speed') == 'slow'){
+      document.getElementById('scroller').setAttribute('data-speed', 'stop');
+    } else {
+      document.getElementById('scroller').setAttribute('data-speed', 'slow');
+    }
+  };
+
+  function pausarScroller(){
+    
+  }
+ */
 </script>
 
 </html>
