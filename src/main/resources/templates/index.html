@@ -252,7 +252,7 @@
     <a class="link-cta" href="#email">FALE CONOSCO</a>
   </header>
   <main class="corpo">
-    <div id="bg" style="height: 80%; overflow: hidden; background-image: url(http://localhost:8080/images/Captura.jpeg); background-repeat: no-repeat; background-size: cover;background-color: rgba(0, 0, 0, 0.5);
+    <div id="bg" style="height: 80%; overflow: hidden; background-image: url(http://localhost:8080/images/Captura.jpg); background-repeat: no-repeat; background-size: cover;background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: overlay;">
 
       <div style="display: flex; align-items: center; justify-content: space-between; flex-direction: column;">
@@ -460,6 +460,17 @@
 
         </div>
       </div>
+
+      <div style="display: block; width: 100%; padding-top: 2%;">
+        <div style="background-color:  rgb(134, 168, 79),; display: flex; align-items: center; flex-direction: column;">
+          <div style="background-color:  rgb(134, 168, 79),; padding-bottom: 2%;">
+            <h1 style="color: white;">NOSSOS TRABALHOS</h1>
+          </div>
+          <div th:replace="flipbook">
+          </div>
+        </div>
+      </div>
+
       <div
         style="display: flex; align-items: start; align-items: center; text-justify: distribute; text-align: justify;">
         <div style="width: 50%; padding: 5%;">
@@ -536,10 +547,9 @@
       </div>
     </div>
 
-    <div style="background-color: blue; display: flex; align-items: center;">
-      <div th:replace="flipbook">
-      </div>
-    </div>
+    
+
+    
 
     <div id="email" style="background-color: rgb(17, 76, 133); padding: 5%; color: white; padding: 10%;">
       <form th:action="@{/contatar}" th:object="${email}" enctype="multipart/form-data" method="post">
